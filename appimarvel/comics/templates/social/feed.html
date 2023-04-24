@@ -3,9 +3,17 @@
 {% block content %}
 <article>
     <div class="profile">
-        <img src="../../static/marvel.jpeg"> 
-       {{ nombre }}
-       {{ marvel_api }}
+        
+        <table>
+        {% for comic in comics_marvel %}
+            <tr>
+                <td>{{ comic.nombre }}</td>
+                <td><img width=20% src='{{ comic.imagen }}.{{ comic.extension }}'</td>
+                <td>{{ comic.id }}</td>
+                <td>añadir a favoritos</td>
+            </tr>
+        {% endfor %}
+        </table>
     </div>
 </article>
 

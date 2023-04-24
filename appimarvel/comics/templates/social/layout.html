@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'style.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static '/appimarvel/comics/static/style.css'%}">
 </head>
 <body>
 
@@ -44,10 +44,9 @@
 			{% if request.user.is_authenticated %}
 			<a class="profile" >Mi Perfil</a>
 			<a class="new" >Adminitra tus comics favoritos
-				<a href="/appimarvel/comics/marvel.py">de clic aquí</a>
+				
 			</a>
-			 
-			{{ marvel_api }}
+
 			{% endif %}
 			
 		</nav>
