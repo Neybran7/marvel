@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static%}
+<html>
+<head>
+	<title>Al dia con los comics</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css'%}">
+</head>
+<body>
+
+	<header class="main-head">
+		<nav class="main">
+			<h1 id="logo">Bienvenidos al mundo del comics </h1>
+			<ul>
+				{%if request.user.is_authenticated %}
+				<li><a href="{% url 'logout' %}">Salir</a></li>
+			   
+				{%else%}
+				<li><a href="{% url 'feed'%}">Inicio</a></li>
+				<li><a href="{% url 'register'%}">Registrarse</a></li>
+				<li><a href="{% url 'login'%}">Ingresar</a></li>
+			     {%endif%}
+			</ul>
+		</nav>
+	</header>
+{% if messages %}
+{% for message in messages %}
+<div class="=notification {{message.tags}}">
+	{{message}}
+</div>
+{% endfor %}
+{%endif%}
+
+
+<!-------------------------------------
+					Navigation Bar 
+	-------------------------------------->
+	<div class="main">
+		
+		<nav class="second-nav">
+		
+			{% if request.user.is_authenticated %}
+			<a class="profile" >Mi Perfil</a>
+			<a class="new" >Adminitra tus comics favoritos
+				<a href="/appimarvel/comics/marvel.py">de clic aquí</a>
+			</a>
+			 
+			{{ marvel_api }}
+			{% endif %}
+			
+		</nav>
+
+
+		{% block content %}
+
+		{% endblock content %}
+
+
+
+	</div>
+
+	<footer>
+		<div class="row">
+		Comics-marvel	
+		</div>
+	</footer>
+
+</body>
+</html>
